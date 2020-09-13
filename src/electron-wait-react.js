@@ -13,7 +13,7 @@ const tryConnection = () => client.connect({port: port}, () => {
             startedElectron = true;
             const exec = require('child_process').exec;
             exec('yarn run electron');
-            exec('notepad');
+            //exec('notepad');
         }
     }
 );
