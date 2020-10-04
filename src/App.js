@@ -14,27 +14,29 @@ class App extends React.Component {
     }
 
     click = () => {
-        fileDialog()
-            .then(file => {
-                const data = new FormData()
-                data.append('file', file[0])
-                data.append('imageName', 'flower')
-                this.setState({
-                    fileOpenResult: path.join(file[0].path, file[0].name)
-                });
-                // Post to server
-                // fetch('/uploadImage', {
-                //   method: 'POST',
-                //   body: data
-                // })
-            })
+        // fileDialog()
+        //     .then(file => {
+        //         const data = new FormData()
+        //         data.append('file', file[0])
+        //         data.append('imageName', 'flower')
+        //         this.setState({
+        //             fileOpenResult: path.join(file[0].path, file[0].name)
+        //         });
+        //         // Post to server
+        //         // fetch('/uploadImage', {
+        //         //   method: 'POST',
+        //         //   body: data
+        //         // })
+        //     })
+        const {dialog} = require('electron')
+        console.log(dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']}))
     };
 
     render() {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
+                    {/* <img src={logo} className="App-logo" alt="logo"/>
                     <p>
                         Edit <code>src/App.js</code> and save to reload.
                     </p>
@@ -45,9 +47,13 @@ class App extends React.Component {
                         rel="noopener noreferrer"
                     >
                         Learn React
-                    </a>
-                    <button onClick={this.click}>test</button> <input type="text" name="fileOpenResult" value={this.state.fileOpenResult} size={20}/>
+                    </a> */}
+                 
                 </header>
+                <body>
+                    <button onClick={this.click}>test</button> 
+                    {/* <input type="text" name="fileOpenResult" value={this.state.fileOpenResult} size={20}/> */}
+                </body>
             </div>
         );
     }
